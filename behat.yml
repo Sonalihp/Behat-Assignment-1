@@ -1,0 +1,30 @@
+default:
+  suites:
+    default: 
+      contexts:
+        - FeatureContext
+        - Drupal\DrupalExtension\Context\DrupalContext
+        - Drupal\DrupalExtension\Context\MinkContext
+        - Drupal\DrupalExtension\Context\MessageContext
+        - Drupal\DrupalExtension\Context\DrushContext
+  extensions:    
+    DMore\ChromeExtension\Behat\ServiceContainer\ChromeExtension: ~
+    Behat\MinkExtension:
+    Drupal\MinkExtension:
+     ajax_timeout: 5
+     goutte: ~
+     browser_name: chrome
+     javascript_session: default
+     base_url: http://tutorialsninja.com/demo/
+     sessions:
+      default:
+        chrome:
+           api_url: http://localhost:9222
+    Drupal\DrupalExtension:
+      blackbox: ~
+    Bex\Behat\ScreenshotExtension:
+      image_drivers:
+        local:
+          screenshot_directory: "%paths.base%/media"
+
+
